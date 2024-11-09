@@ -1,0 +1,26 @@
+{%extends "layout.html"%}
+
+{%block title%}
+create
+{%endblock%}
+
+{% block content %}
+
+<h1 class="text-center mt-4">
+    create a blog-post
+</h1>
+<h2>
+ {%if form.instance.pk%}
+ Edit post
+ {%else%}
+ Create post
+ {%endif%}
+ <form method="post" enctype="multipart/form-data" class="form">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-warning" type="submit">submit</button>
+ </form>
+ <a href="{%url 'blog_list'%}" >Back to posts list</a>
+</h2>
+
+{% endblock %}
